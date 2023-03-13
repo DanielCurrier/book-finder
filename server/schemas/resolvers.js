@@ -12,5 +12,40 @@ const resolvers = {
             throw new AuthenticationError("Please Log In to Continue!");
         },
     },
+    Mutation: {
+        login: async (parent, { email, password }) => {
+            const user = await User.findOne({ email });
 
-}
+            if (!user) {
+                throw new AuthenticationError("Faulty Credetnials, Try Again")
+            }
+            const correctPassword = await user.isCorrectPassword(password);
+
+            if (!correctPassword) {
+                throw new AuthenticationError("Incorrect Password");
+            }
+            const token = signToken(user);
+            return { token, user };
+        },
+        addUser: async (parent, args) => {
+            const user = await User.create(args);
+            const token = signToken(user);
+
+            return { token, user };
+        },
+        saveBook: async (parent, { input }, context) => {
+            if (context.user) {
+                const updatedUser = await User.findOneAndUpdate(
+                    { _id: context.user.id },
+                    { $addToSet: { savedBooks: input } },
+                    { new: true, runValidators: true }
+                );
+                return updatedUser;
+            }
+            throw new AuthenticationError("Please log in to continue")
+        },
+    },
+
+};
+
+module.exports = resolvers;
