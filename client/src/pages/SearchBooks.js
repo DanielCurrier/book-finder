@@ -6,7 +6,7 @@ import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
 
 // Apollo hook and Mutation imported
 import { SAVE_BOOK } from '../utils/mutations';
-import { useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/react-hooks';
 
 const SearchBooks = () => {
   // create state for holding returned google api data

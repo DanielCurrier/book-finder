@@ -6,7 +6,7 @@ import { REMOVE_BOOK } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 import { removeBookId } from '../utils/localStorage';
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 
 
 const SavedBooks = () => {
@@ -30,9 +30,6 @@ const SavedBooks = () => {
         },
       });
 
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
 
       userData = user;
       // upon success, remove book's id from localStorage
