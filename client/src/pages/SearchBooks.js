@@ -77,7 +77,7 @@ const SearchBooks = () => {
         },
       });
 
-      if (!response.ok) {
+      if (!response) {
         throw new Error('something went wrong!');
       }
 
