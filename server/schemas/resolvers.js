@@ -17,7 +17,7 @@ const resolvers = {
             const user = await User.findOne({ email });
 
             if (!user) {
-                throw new AuthenticationError("Faulty Credetnials, Try Again")
+                throw new AuthenticationError("Faulty Credentials, Try Again")
             }
             const correctPassword = await user.isCorrectPassword(password);
 
