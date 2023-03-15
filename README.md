@@ -8,6 +8,8 @@
 *[Contact](#contact)
 
 # Description
+![image](https://user-images.githubusercontent.com/112973907/225470665-728f528a-9ba1-4ae0-9d3f-4ae40d58b122.png)
+
 Dan's Book Finder (tm) is a MERN stack application designed to help you with all of your book finding needs. For more details, read more below!
 ## Installation
 To install this application , download this repo to your local machine and install its dependencies with 'npm install'. This is not required though, you will fiund a deployed link in the next section. 
